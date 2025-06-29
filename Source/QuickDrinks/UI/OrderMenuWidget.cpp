@@ -23,6 +23,15 @@ void UOrderMenuWidget::InitOrderMenu()
 		FString FirstOption = EnumPtr->GetDisplayNameTextByIndex(0).ToString();
 		DrinkComboBox->SetSelectedOption(FirstOption);
 	}
+
+	if (CheckBox_Milk)
+	{
+		CheckBox_Milk->SetIsChecked(false);
+	}
+	if (CheckBox_Sugar)
+	{
+		CheckBox_Sugar->SetIsChecked(false);
+	}
 }
 
 void UOrderMenuWidget::NativeConstruct()
@@ -45,7 +54,7 @@ void UOrderMenuWidget::NativeConstruct()
 void UOrderMenuWidget::ConfirmOrder()
 {
 	EDrinkType SelectedDrink = GetSelectedDrink();
-	bool bMilk = CheckBox_Sugar ? CheckBox_Sugar->IsChecked() : false;
+	bool bMilk = CheckBox_Milk ? CheckBox_Milk->IsChecked() : false;
 	bool bSugar = CheckBox_Sugar ? CheckBox_Sugar->IsChecked() : false;
 	
 	OnOrderConfirmed.Broadcast(SelectedDrink, bMilk, bSugar);
