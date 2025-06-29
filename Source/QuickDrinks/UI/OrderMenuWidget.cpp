@@ -12,7 +12,7 @@ void UOrderMenuWidget::InitOrderMenu()
 	DrinkComboBox->ClearOptions();
 
 	UEnum* EnumPtr = StaticEnum<EDrinkType>();
-	for (int32 i = 0; i < EnumPtr->NumEnums() - 1; i++)
+	for (int32 i = 0; i < EnumPtr->NumEnums() - 2; i++)
 	{
 		FString DisplayName = EnumPtr->GetDisplayNameTextByIndex(i).ToString();
 		DrinkComboBox->AddOption(DisplayName);
@@ -69,7 +69,7 @@ EDrinkType UOrderMenuWidget::GetSelectedDrink()
 
 	const FString SelectedStr = DrinkComboBox->GetSelectedOption();
 	const UEnum* EnumPtr = StaticEnum<EDrinkType>();
-	for (int32 i = 0; i < EnumPtr->NumEnums() - 1; i++)
+	for (int32 i = 0; i < EnumPtr->NumEnums() - 2; i++)
 	{
 		if (SelectedStr == EnumPtr->GetDisplayNameTextByIndex(i).ToString())
 		{
